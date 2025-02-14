@@ -1,15 +1,15 @@
-# Halting predicted vertebrate declines requires tackling multiple drivers of biodiversity loss
+# Tutorial RMarkdown
 
-Processed data, code and results from : Capdevila P., O’Brien D.A., Marconi V., Johnson T.F., Freeman R., McRae L., Clements C.F. 2025. Halting predicted vertebrate declines requires tackling multiple drivers of biodiversity loss
+Necessary material to run the RMarkdown tutorial.
 
-## Repository layout
+## Contingut
 
-[*entire_workflow.html*](entire_workflow.html) - html document detailing the entire analysis workflow, with code and rendered figures.
+[*intro_markdown.html*](intro_markdown.html) - html document needed to folow the workshop.
 
-[*Code*](Code) - R scripts for data preprocessing, model fitting, and manuscript figures (separate script files for each figure).
+[*intro_markdown.Rmd*](intro_markdown.Rmd) - RMarkdow document needed to generate the html.
 
-[*Data*](Data) - raw data not provided. Data can be requested from: <https://www.livingplanetindex.org/data_portal>.
+[*references.bib*](references.bib) - References used in the document. 
 
-[*Results*](Results) - fitted models, manuscript figures and tables. Fitted models are too large to be hosted on github.
+[*apa.csl*](apa.csl) - citation format downloaded from zotero.
 
-[*Supplementary*](Supplementary) - markdown document rendering the supplementary information.
+[*images*](images) - image folder necessary for running the script. 
