@@ -250,6 +250,7 @@ N_{t+1} = N_t e^{rt}
 $$
 
 where:
+
 - \( N_t+1 \) is the population at time \( t+1 \),
 - \( N_t \) is the initial population,
 - \( r \) is the growth rate,
@@ -361,5 +362,117 @@ long_vector <- rep(1:10, each=3)
 summary(long_vector)
 ```
 
+### In-text R code
+
+One interesting feature of RMarkdown is that it can embeb results from code in the text, which is particularly useful for reports. For example, one could write the current date using the code separated by "``". See the following example. 
+
+```
+Today’s date is `r Sys.Date()`.
+```
+
+The code looks like:
+
+![](images/figure8.png)
+
+We can also do it inline. Like this. Today’s date is `r Sys.Date()`.
+
+This looks like:
+![](images/figure9.png)
+
+
+
+The example above is simple (showing the current date), but using the same syntax, you can display values produced by more complex R code. For example, calculating the min, median, and max of a result. For this example we will use the dataset `mtcars` from bas R. 
+
+The minimum value is `r min(mtcars$mpg)`, the median is `r median(mtcars$mpg)`, and the maximum is `r max(mtcars$mpg)`.
+
+The code looks like: 
+
+![](images/figure10.png)
+
+
+We can also integrate R objects or values that were created in R code chunks earlier in the script. As an example, the script below calculates the proportion of cases that are aged less than 18 years old using tidyverse functions, and creates the objects `less18`, `total`, and `less18prop`. This dynamic value is inserted into subsequent text.
+
+```{r example age}
+library(dplyr)
+# Example dataset
+data <- data.frame(age = c(10, 25, 5, 40, 15, 18, 30, 12, 8, 50))
+
+# Calculate proportion under 18
+less18 <- data %>% filter(age < 18) %>% nrow()
+total <- nrow(data)
+less18prop <- less18 / total * 100
+```
+
+Now, we can reference this dynamically in text:
+
+The proportion of individuals aged less than 18 years old is `r round(less18prop, 2)`%, meaning that `r less18` out of `r total` is under 18.
+
+Which looks like: 
+
+![](images/figure11.png)
+
+### Tabbed sections
+
+For HTML outputs, we can arrange the sections into “tabs”. Simply add .tabset in the curly brackets { } that are placed after a heading. Any sub-headings beneath that heading (until another heading of the same level) will appear as tabs that the user can click through. 
+
+### Tabbed section {.tabset}
+
+#### Distribution 
+
+```{r distribution}
+
+ggplot(iris,aes(x=Sepal.Length))+
+  geom_density(fill="steelblue", alpha=.5, colour=NA)+ 
+  theme_bw()
+
+```
+
+#### Boxplot 
+
+```{r boxplot}
+
+ggplot(iris,aes(x=Sepal.Length, y=Species, group=Species, fill=Species))+
+  geom_boxplot(alpha=.5)+ 
+  theme_bw()
+
+```
+
+### Using code within a report 
+
+One powerful way to use R Markdown is to use code from other scripts. This can make your R Markdown script less cluttered, more simple, and easier to organize. It can also help if you want to display final figures at the beginning of the report. In this approach, the final R Markdown script simply combines pre-processed outputs into a document.
+
+One way of doing this is by providing the R scripts (file path and name with extension) to the base R command `source()`.
+
+In this example, I will load a script that uses a function to simulate a population, projects it 100 years, and then it plots it. 
+
+```{r source}
+source("scripts/population_simulation.R")
+
+print(pop_plot)
+
+```
+
+As you can see I could recover the plot created, but that's not all of it. I can reuse the function. 
+
+```{r sim}
+
+proj_pop2 <- pop_proj(growth = 0.1,tmax = 50)
+
+ggplot(proj_pop2, aes(x=time, y=n))+
+  geom_point()+ geom_line()+
+    theme_bw()
+
+
+```
+
+Or we can also refer to the results from the code. For example, explore the abundance of the population at time 50. 
+
+```{r reppop}
+
+proj_pop$n[50]
+
+```
+
+We can use the inline text citation to say that the abundance at time 50 was `r proj_pop$n[50]`. 
 
 # References 
