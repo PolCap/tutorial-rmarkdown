@@ -2,7 +2,7 @@
 
 Necessary material to run the RMarkdown tutorial.
 
-## Contingut
+## Content
 
 [*intro_markdown.html*](intro_markdown.html) - html document needed to folow the workshop.
 
