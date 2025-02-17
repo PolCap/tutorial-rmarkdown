@@ -10,6 +10,6 @@ Necessary material to run the RMarkdown tutorial.
 
 [*references.bib*](references.bib) - References used in the document. 
 
-[*apa.csl*](apa.csl) - citation format downloaded from zotero.
+[*apa.csl*](apa.csl) - Citation format downloaded from zotero.
 
-[*images*](images) - image folder necessary for running the script. 
+[*images*](images) - Image folder necessary for running the script. 
