@@ -240,7 +240,7 @@ kable(df)
 ```
 
 
-### Adding Mathematical Equations
+### Mathematical Equations
 RMarkdown supports LaTeX-style mathematical equations. You can write inline equations using `$...$`, like this: $N_{t+1} = N_t e^{rt}$. 
 
 For display equations, use double dollar signs:
