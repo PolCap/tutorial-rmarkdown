@@ -13,3 +13,5 @@ Necessary material to run the RMarkdown tutorial.
 [*apa.csl*](apa.csl) - Citation format downloaded from zotero.
 
 [*images*](images) - Image folder necessary for running the script. 
+
+[*data*](data) - Data folder containing the data to be loaded. 
