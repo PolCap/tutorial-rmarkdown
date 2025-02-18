@@ -349,6 +349,13 @@ y <- 5
 x * y
 ```
 
+We can also read the data stored in folders that we can access to.
+
+```{r read_data}
+bird_pops <- read.csv(file="data/bird_pops.csv")
+```
+
+
 ### Plotting in RMarkdown
 
 We can embed plots using `ggplot2` or base R plotting functions.
